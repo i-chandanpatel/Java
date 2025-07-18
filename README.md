@@ -1,5 +1,5 @@
-Introduction to Java
-Java is a high-level, object-orientied. It is platform-independent, which means we can write code once and run it anywhere using the Java Virtual Machine (JVM). Java is mostly used for building desktop applications, web applications, Android apps, and enterprise systems.
+Java is a high-level, object-orientied programming language. It is platform-independent, which means we can write code once and run it anywhere using the Java Virtual Machine (JVM). Java is mostly used for building desktop applications, web applications, Android apps, and enterprise systems.
+
 
 Key Features of Java
 Platform Independent: Java is famous for its Write Once, Run Anywhere (WORA) feature. This means we can write our Java code once, and it will run on any device or operating system without changing anything.
@@ -11,36 +11,15 @@ Just-In-Time (JIT) Compiler: Java uses a JIT compiler. It improves performance b
 Understanding Hello World Program in Java
 When we learn any programming language, the first step is writing a simple program to display "Hello World". So, here is a simple Java program that displays "Hello World" on the screen.
 
-Java Hello World Program:
 
-// This is a simple Java program to print Hello World!
-public class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
-    }
-}
-
-Output
-Hello World!
-How does this work:
-
-// starts a single-line comment. The comments does not executed by Java.
-public class HelloWorld defines a class named HelloWorld. In Java, every program must be inside a class.
-public static void main(String[] args) is the entry point of any Java application. It tells the JVM where to start executing the program.
-System.out.println("Hello, World!"); prints the message to the console.
-Java program execution follows this below simple flow:
-
-How-java-code-Executes
 Java Program Execution Flow
 Write code in a file like HelloWorld.java.
 The Java Compiler "javac" compiles it into bytecode "HelloWorld.class".
 The JVM (Java Virtual Machine) reads the .class file and interprets the bytecode.
 JVM converts bytecode to machine readable code i.e. "binary" (001001010) and then execute the program.
-To understand Hello World program in detail, refer to article: Java Hello World Program
+
 
 Comments in Java
-The comments are the notes written inside the code to explain what we are doing. The comment lines are not executed while we run the program.
-
 Single-line comment
 // This is a comment
 Multi-line comment
@@ -48,7 +27,7 @@ Multi-line comment
 This is a multi-line comment.
 This is useful for explaining larger sections of code.
 */
-To understand Java comments in detail, refer to article: Java Comments
+
 
 Curly Braces and Indentation in Java
 In Java, curly braces {} are used to define blocks of code. For example, the body of a class or method is enclosed within curly braces.
@@ -70,20 +49,9 @@ Naming Conventions in Java
 Java uses standard naming rules that make the code easier and improves the readability.
 In Java, the class names start with a capital letter for example, HelloWorld. Method and variable names start with a lowercase letter and use camelCase like printMessage.
 And the constants are written in all uppercase letters with underscores like MAX_SIZE.
-To understand Naming convention in Java in detail, refer to article: Java Naming Convention
 
-Famous Applications Built Using Java
-Android Apps: Most of the Android mobile apps are built using Java.
-Netflix: This uses Java for content delivery and backend services.
-Amazon: Java language is used for its backend systems.
-LinkedIn: This uses Java for handling high traffic and scalability.
-Minecraft: This is one of the world’s most popular games that is built in Java.
-Spotify: This uses Java in parts of its server-side infrastructure.
-Uber: Java is used for backend services like trip management.
-NASA WorldWind: This is a virtual globe software built using Java.
-What Can We Do with Java?
+
 Java is used for:
-
 Mobile App Development: Android development using Android Studio.
 Web Development: Using frameworks like Spring Boot and Jakarta EE.
 Desktop GUI Applications: With libraries like JavaFX and Swing.
@@ -94,24 +62,22 @@ Internet of Things (IoT): Java can run on embedded systems and devices.
 Cloud-based Applications: Java is used in services on AWS, Azure, and Google Cloud.
 Scientific Applications: Java is used in tools that process large amounts of scientific data.
 
-Advanatages of JDK
-The Advanatages of JDK are listed below:
 
+Advanatages of JDK
 Complete Development Kit: It Includes compiler (javac), JRE, JVM, and debugging tools.
 Platform Independence: It write once, run anywhere (WORA) using JVM.
 Rich Libraries & APIs: JDK has built-in support for networking, I/O, databases, and more.
 Performance Optimization: Just-In-Time (JIT) compiler boosts execution speed.
 Backward Compatibility: Older Java apps still run on newer JDK versions.
-Disadvantages of JDK
-The disadvantages of JDK are listed below:
 
+Disadvantages of JDK
 Large Memory Usage: JDK consumes more RAM compared to some lightweight languages.
 Complex Setup: Requires manual environment variable configuration.
 Slower Startup Time: JVM initialization can delay execution.
 License Restrictions: Oracle JDK requires a commercial license for business use.
 
-Class Definition
 
+Class Definition
 Every Java program must have at least one class. Here, the class is defined using the class keyword:
 
 public class HelloWorld {
@@ -120,8 +86,8 @@ public class HelloWorld {
 
 Note: If the class is public, the filename must match the class name HelloWorld.java
 
-2. main Method
 
+2. main Method
 In the Java programming language, every application must contain a main method as it is the entry point of the application:
 
 public static void main(String[] args)
@@ -131,32 +97,22 @@ static: Method can run without creating an object.
 void: It doesn’t return any value.
 String[] args: Accepts command-line arguments.
 
-✅ 1. Local Variables
 
+1. Local Variables
 Declared inside a method, constructor, or block.
-
 Created when the method/block is executed.
-
 Destroyed once the method finishes.
-
 Must be initialized before use (no default values).
 
-✅ 2. Instance Variables
-
+2. Instance Variables
 Declared inside a class but outside any method/constructor.
-
 Each object has its own copy.
-
 They get default values if not initialized.
-
 Lifetime = as long as the object exists.
 
-✅ 3. Static Variables (Class Variables)
-
+3. Static Variables (Class Variables)
 Declared with the static keyword.
-
 Shared among all objects of the class (only one copy exists).
-
 Can be accessed using class name.
 
 class VariableTypes {
@@ -182,9 +138,8 @@ class VariableTypes {
     }
 }
 
-Instance Variables vs Static Variables
-Now let us discuss the differences between the Instance variables and the Static variables:
 
+Instance Variables vs Static Variables
 Each object will have its own copy of an instance variable, whereas we can only have one copy of a static variable per class, irrespective of how many objects we create. Thus, static variables are good for memory management.
 Changes made in an instance variable using one object will not be reflected in other objects as each object has its own copy of the instance variable. In the case of a static variable, changes will be reflected in other objects as static variables are common to all objects of a class.
 We can access instance variables through object references, and static variables can be accessed directly using the class name.
