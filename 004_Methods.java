@@ -1,15 +1,11 @@
-// ---------- Parent Class ----------
 class Parent {
-
     // Instance Method in Parent
     void showMessage() {
         System.out.println("Message from Parent class");
     }
 }
 
-// ---------- Child Class (Overriding Example) ----------
 class Child extends Parent {
-
     // Overridden Method
     @Override
     void showMessage() {
@@ -17,9 +13,7 @@ class Child extends Parent {
     }
 }
 
-// ---------- Main Demo Class ----------
 public class AllMethodsDemo {
-
     // 1. Static Method
     static void staticMethod() {
         System.out.println("This is a STATIC method. Belongs to the class.");
@@ -60,7 +54,6 @@ public class AllMethodsDemo {
         secret();
     }
 
-    // ---------- MAIN ----------
     public static void main(String[] args) {
 
         System.out.println("=== STATIC METHOD ===");
@@ -94,4 +87,4 @@ public class AllMethodsDemo {
         Parent poly = new Child(); 
         poly.showMessage(); // Runtime polymorphism -> Child version
     }
-                    }
+}
