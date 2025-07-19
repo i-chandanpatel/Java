@@ -1,4 +1,4 @@
-package outerpkg;
+package outerpackage;
 
 public class OuterClass {
     public void showMessage() {
