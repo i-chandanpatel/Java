@@ -23,15 +23,13 @@ class Main {
         b = "Ram";
 
         // 5. compareTo(): compares strings lexicographically
-        // Returns 0 if equal, a positive or negative number otherwise
         System.out.println("a.compareTo(b) " + a.compareTo(b)); // 0
 
         a = "Raam";
-        System.out.println(a.compareTo(b)); 
-        // -12: 'a' has 'a' at index 2, 'b' has 'm', so 'a' - 'm' = -12
+        System.out.println(a.compareTo(b)); // -12
 
         // 6. == operator: compares references (not content)
-        System.out.println(a == b); // false, different references
+        System.out.println(a == b); // false
 
         a = "Ram";
 
@@ -46,57 +44,78 @@ class Main {
         System.out.println("is c==d " + (c == d)); // false
 
         // Strings are immutable: modifying them creates a new object
-        a += " Rajya"; // Concatenation creates a new String
+        a += " Rajya";
         System.out.println("a after a+=\"Rajya\";" + a); // "Ram Rajya"
 
-        // StringBuffer: mutable version of string, used for performance when modifying strings
+        // StringBuffer: mutable version of string
         StringBuffer s = new StringBuffer();
-
-        // Default capacity is 16 characters
         System.out.println("s.capacity() " + s.capacity()); // 16
-
-        // Initial length is 0
         System.out.println("s.length() " + s.length());
-
-        // 7. append(): adds content to the end of buffer
-        System.out.println("s.append(\"John\") " + s.append("John")); // "John"
-
-        // Capacity remains same until exceeded
-        System.out.println("s.capacity() " + s.capacity()); // 16
-        System.out.println("s.length() " + s.length()); // 4
-
-        // 8. insert(): inserts content at given position
-        System.out.println("s.insert(4,\"y\") " + s.insert(4, "y")); // "Johny"
-
-        // 9. ensureCapacity(): ensures minimum capacity (resizes if needed)
+        System.out.println("s.append(\"John\") " + s.append("John"));
+        System.out.println("s.capacity() " + s.capacity());
+        System.out.println("s.length() " + s.length());
+        System.out.println("s.insert(4,\"y\") " + s.insert(4, "y"));
         s.ensureCapacity(20);
         System.out.println("s.ensureCapacity(20) " + s.capacity());
-
-        // 10. delete(): deletes characters from start index to end index (exclusive)
-        System.out.println("s.delete(1,3) " + s.delete(1, 3)); // "Jny"
+        System.out.println("s.delete(1,3) " + s.delete(1, 3));
         System.out.println();
-        
+
         // Additional useful methods:
-        
-        // 11. toUpperCase() and toLowerCase()
+
         String name = "Sample";
-        System.out.println("name.toUpperCase(): " + name.toUpperCase()); // "SAMPLE"
-        System.out.println("name.toLowerCase(): " + name.toLowerCase()); // "sample"
+        System.out.println("name.toUpperCase(): " + name.toUpperCase());
+        System.out.println("name.toLowerCase(): " + name.toLowerCase());
 
-        // 12. equals(): compares string content
-        System.out.println("a.equals(b): " + a.equals(b)); // true
+        System.out.println("a.equals(b): " + a.equals(b));
+        System.out.println("\"Ram\".equalsIgnoreCase(\"ram\"): " + "Ram".equalsIgnoreCase("ram"));
+        System.out.println("name.substring(1,4): " + name.substring(1, 4));
+        System.out.println("name.replace(\"a\", \"o\"): " + name.replace("a", "o"));
 
-        // 13. equalsIgnoreCase()
-        System.out.println("\"Ram\".equalsIgnoreCase(\"ram\"): " + "Ram".equalsIgnoreCase("ram")); // true
-
-        // 14. substring(): returns a part of the string
-        System.out.println("name.substring(1,4): " + name.substring(1, 4)); // "amp"
-
-        // 15. replace(): replaces character or string
-        System.out.println("name.replace(\"a\", \"o\"): " + name.replace("a", "o")); // "Somple"
-
-        // 16. reverse() from StringBuffer
         StringBuffer sb = new StringBuffer("hello");
-        System.out.println("sb.reverse(): " + sb.reverse()); // "olleh"
+        System.out.println("sb.reverse(): " + sb.reverse());
+
+        // 17. split(): splits a string into array based on delimiter
+        String fruits = "apple,banana,orange";
+        String[] arr = fruits.split(",");
+        System.out.println("split():");
+        for (String fruit : arr) {
+            System.out.println(fruit);
+        }
+
+        // 18. format(): formatted string similar to printf
+        String formatted = String.format("Hello %s, you are %d years old.", "Alice", 25);
+        System.out.println("format(): " + formatted);
+
+        // 19. toCharArray(): converts string to character array
+        char[] chars = name.toCharArray();
+        System.out.println("toCharArray():");
+        for (char ch : chars) {
+            System.out.print(ch + " ");
+        }
+        System.out.println();
+
+        // 20. join(): joins multiple strings with a delimiter
+        String joined = String.join(" - ", "Java", "Python", "C++");
+        System.out.println("join(): " + joined);
+
+        // 21. intern(): returns canonical representation from string pool
+        String e = new String("Test").intern();
+        String f = "Test";
+        System.out.println("intern(): " + (e == f)); // true
+
+        // 22. matches(): checks if string matches regex pattern
+        String pattern = "[A-Z][a-z]+";
+        System.out.println("matches(): " + "John".matches(pattern)); // true
+        System.out.println("matches(): " + "john".matches(pattern)); // false
+
+        // 23. repeat(): repeats the string n times (Java 11+)
+        System.out.println("repeat(): " + "Hi ".repeat(3)); // Hi Hi Hi 
+
+        // 24. strip(): removes leading and trailing whitespace (Unicode-aware)
+        String messy = "  \t Hello \n ";
+        System.out.println("strip(): '" + messy.strip() + "'");
+
+        // 25. trim(): removes leading and trailing spaces (ASCII only)
+        System.out.println("trim(): '" + messy.trim() + "'");
     }
 }
