@@ -8,7 +8,7 @@ class Main {
         // String literal - stored in String pool
         String a = "John";
 
-        // String object created using 'new' - stored in heap memory
+        // String object created using Constructor 'new' - stored in heap memory
         String b = new String("Denver");
 
         // 1. length(): returns the length of the string
@@ -258,3 +258,15 @@ class Main {
         System.out.println("loop-built: " + sentence);
     }
 }
+/* 
+Strings are Immutable
+
+String in Java is thread-safe because it is immutable, 
+allowing safe access by multiple threads without synchronization.
+
+The String class in Java implements three important interfaces.
+1. CharSequence: Allows access to characters in the string using charAt(), length(), etc.
+2. Comparable<String>: Enables comparing two strings lexicographically using compareTo()
+3. Serializable: Allows string objects to be converted into a byte stream
+
+*/
