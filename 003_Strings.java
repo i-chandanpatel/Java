@@ -160,6 +160,9 @@ class Main {
         String[] two = langs.split(",", 2);
         System.out.println("split with limit: " + Arrays.toString(two));
 
+        //String
+        String n="Denver";
+        System.out.println(STR."Hello, \{n}!");
         // join with iterable
         String joined2 = String.join(" | ", Arrays.asList("API", "DB", "UI"));
         System.out.println("join(iterable): " + joined2);
@@ -256,6 +259,7 @@ class Main {
         StringBuilder sentence = new StringBuilder();
         for (int i=0;i<5;i++) sentence.append(i).append(":hi ");
         System.out.println("loop-built: " + sentence);
+
     }
 }
 /* 
