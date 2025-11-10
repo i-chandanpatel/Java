@@ -5,7 +5,8 @@ class Parent {
         System.out.println("Message from Parent class");
     }
 }
-
+//Inner class can be declared within a method of an outer class which we will be illustrating in the below example where Inner is an inner class in outerMethod().
+//A static class defined inside another class. It cannot access non-static members of the outer class directly. 
 class Child extends Parent {
     // Overridden Method
     // The @Override annotation tells the compiler that this method
