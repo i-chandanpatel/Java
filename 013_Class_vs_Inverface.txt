@@ -1,0 +1,10 @@
+When to Use Class and Interface?
+Use a Class when:
+
+Use a class when you need to represent a real-world entity with attributes (fields) and behaviors (methods).
+Use a class when you need to create objects that hold state and perform actions
+Classes are used for defining templates for objects with specific functionality and properties.
+Use a Interface when:
+
+Use an interface when you need to define a contract for behavior that multiple classes can implement.
+Interface is ideal for achieving abstraction and multiple inheritance.
