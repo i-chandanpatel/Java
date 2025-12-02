@@ -16,7 +16,7 @@ class StaticMethod {
         return "Sum is " + (a + b) + " and current value of static c is " + c;
     }
 
-    // Static method: Can be called using class name, modifies static variable
+    // Static method: Can be called using class name, modifies static variable, without obj this can only access static vars 
     public static int divide(int a, int b) {
         System.out.println("c incremented in divide method from " + c + " to " + (++c));
         return a / b;
