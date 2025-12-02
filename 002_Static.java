@@ -6,7 +6,7 @@ class StaticMethod {
     // Final static variable: A constant
     static final double PI = 3.14159;
 
-    // Static block: Runs once when the class is first loaded
+    // Static block: Runs once when the class is first loaded(When the 1st ref of class is created or any static value or method is used
     static {
         System.out.println("Static block executed. Initial value of c: " + c);
     }
