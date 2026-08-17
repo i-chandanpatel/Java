@@ -1,57 +1,409 @@
-class Student {
+/*
+ * ============================================================
+ * JAVA CONSTRUCTORS - QUICK REVISION
+ * ============================================================
+ *
+ * Covers:
+ *
+ * 1. Constructor overloading
+ * 2. this()
+ * 3. super()
+ * 4. Implicit super()
+ * 5. Constructor execution order
+ * 6. Multi-level inheritance
+ * 7. this.variable
+ * 8. Copy-constructor style
+ * 9. Default constructor
+ *
+ * KEY RULES
+ *
+ * this(...)  -> another constructor in SAME class
+ * super(...) -> constructor of PARENT class
+ *
+ * this(...) and super(...) must be the FIRST statement.
+ *
+ * If super(...) is not written, Java inserts super()
+ * automatically (if parent has an accessible no-arg constructor).
+ *
+ * Parent constructor executes before child constructor body.
+ *
+ * Constructors are selected by:
+ *   - number of arguments
+ *   - type of arguments
+ *   - order of arguments
+ *
+ * Constructors are NOT inherited.
+ *
+ * If you write any constructor, Java does NOT provide
+ * the default no-argument constructor automatically.
+ * ============================================================
+ */
+
+
+public class ConstructorRevision {
+
+    public static void main(String[] args) {
+
+        // =====================================================
+        // 1. CONSTRUCTOR OVERLOADING
+        // =====================================================
+
+        Person p1 = new Person();
+        Person p2 = new Person("Rahul");
+        Person p3 = new Person("Rahul", 25);
+
+
+        // =====================================================
+        // 2. this() - CONSTRUCTOR CHAINING
+        // =====================================================
+
+        Student s1 = new Student();
+        Student s2 = new Student("Aman");
+        Student s3 = new Student("Aman", 20);
+
+
+        // =====================================================
+        // 3. super() / super(argument)
+        // =====================================================
+
+        Dog d1 = new Dog();
+        Dog d2 = new Dog("Kittu");
+
+
+        // =====================================================
+        // 4. MULTI-LEVEL CONSTRUCTOR CHAINING
+        // =====================================================
+
+        Puppy p = new Puppy();
+
+
+        // =====================================================
+        // 5. COPY CONSTRUCTOR STYLE
+        // =====================================================
+
+        Student original = new Student("Ravi", 22);
+        Student copy = new Student(original);
+    }
+}
+
+
+/*
+ * ============================================================
+ * 1. CONSTRUCTOR OVERLOADING
+ * ============================================================
+ *
+ * new Person()
+ *       -> Person()
+ *
+ * new Person("Rahul")
+ *       -> Person(String)
+ *
+ * new Person("Rahul", 25)
+ *       -> Person(String, int)
+ * ============================================================
+ */
+
+class Person {
+
     String name;
     int age;
 
-    // 1️⃣ DEFAULT CONSTRUCTOR
-    // -> Java provides a default constructor automatically 
-    //    if no constructor is written.
-    // -> It simply initializes object with default values (null, 0, false)
-    // But if we define any constructor, the default is NOT provided.
-    // (So here we explicitly write one)
 
-    Student() {  
-        // This is also called a No-Argument constructor
-        System.out.println("No-Argument Constructor called!");
-        name = "Unknown"; // setting default values
-        age = 0;
+    Person() {
+
+        System.out.println("Person()");
     }
 
-    // 2️⃣ PARAMETERIZED CONSTRUCTOR
-    // -> Allows passing values during object creation
-    Student(String n, int a) {
-        System.out.println("Parameterized Constructor called!");
-        name = n;
-        age = a;
+
+    Person(String name) {
+
+        System.out.println("Person(String)");
     }
 
-    // 3️⃣ COPY CONSTRUCTOR
-    // -> Java doesn't have a built-in copy constructor, but we can create one
-    // -> Used to copy data from one object to another
+
+    Person(String name, int age) {
+
+        System.out.println("Person(String, int)");
+    }
+}
+
+
+/*
+ * ============================================================
+ * 2. this() - SAME CLASS CONSTRUCTOR CHAINING
+ * ============================================================
+ *
+ * new Student()
+ *
+ * Student()
+ *     |
+ *     +-- this("Unknown", 0)
+ *             |
+ *             +-- Student(String, int)
+ *
+ *
+ * new Student("Aman")
+ *
+ * Student(String)
+ *     |
+ *     +-- this(name, 18)
+ *             |
+ *             +-- Student(String, int)
+ * ============================================================
+ */
+
+class Student {
+
+    String name;
+    int age;
+
+
+    Student() {
+
+        this("Unknown", 0);
+
+        System.out.println("Student()");
+    }
+
+
+    Student(String name) {
+
+        this(name, 18);
+
+        System.out.println("Student(String)");
+    }
+
+
+    Student(String name, int age) {
+
+        this.name = name;
+        this.age = age;
+
+        System.out.println("Student(String, int)");
+    }
+
+
+    /*
+     * Copy-constructor style
+     *
+     * Not a special Java feature.
+     * Just a constructor accepting an object
+     * of the same class.
+     */
+
     Student(Student other) {
-        System.out.println("Copy Constructor called!");
-        this.name = other.name;
-        this.age = other.age;
-    }
 
-    // Method to display student info
-    void display() {
-        System.out.println("Name: " + name + ", Age: " + age);
+        this(other.name, other.age);
+
+        System.out.println("Student(Student)");
     }
 }
 
-public class ConstructorTypes {
-    public static void main(String[] args) {
 
-        // ✅ 1. Calling No-Argument Constructor
-        Student s1 = new Student();  // calls Student()
-        s1.display();  // Output -> Name: Unknown, Age: 0
+/*
+ * ============================================================
+ * 3. super()
+ * ============================================================
+ *
+ * Dog extends Animal
+ *
+ * new Dog()
+ *
+ * Dog()
+ *   |
+ *   +-- super()
+ *          |
+ *          +-- Animal()
+ *
+ *
+ * new Dog("Kittu")
+ *
+ * Dog(String)
+ *   |
+ *   +-- super(name)
+ *          |
+ *          +-- Animal(String)
+ * ============================================================
+ */
 
-        // ✅ 2. Calling Parameterized Constructor
-        Student s2 = new Student("Alice", 21);  // calls Student(String, int)
-        s2.display();  // Output -> Name: Alice, Age: 21
+class Animal {
 
-        // ✅ 3. Calling Copy Constructor
-        Student s3 = new Student(s2);  // calls Student(Student)
-        s3.display();  // Output -> Name: Alice, Age: 21 (copied from s2)
+    Animal() {
+
+        System.out.println("Animal()");
+    }
+
+
+    Animal(String name) {
+
+        System.out.println("Animal(String): " + name);
     }
 }
+
+
+class Dog extends Animal {
+
+
+    Dog() {
+
+        super();
+
+        System.out.println("Dog()");
+    }
+
+
+    Dog(String name) {
+
+        super(name);
+
+        System.out.println("Dog(String)");
+    }
+}
+
+
+/*
+ * ============================================================
+ * 4. IMPLICIT super()
+ * ============================================================
+ *
+ * If you don't write super(...), Java inserts:
+ *
+ *     super();
+ *
+ * provided the parent has an accessible no-arg constructor.
+ * ============================================================
+ */
+
+class Cat extends Animal {
+
+    Cat() {
+
+        // Java automatically inserts:
+        //
+        // super();
+
+        System.out.println("Cat()");
+    }
+}
+
+
+/*
+ * ============================================================
+ * 5. MULTI-LEVEL INHERITANCE
+ * ============================================================
+ *
+ * Puppy -> Dog -> Animal
+ *
+ * new Puppy()
+ *
+ * Puppy()
+ *    |
+ *    +-- implicit super()
+ *           |
+ *           +-- Dog()
+ *                  |
+ *                  +-- super()
+ *                         |
+ *                         +-- Animal()
+ *
+ * ACTUAL EXECUTION ORDER:
+ *
+ * Animal()
+ * Dog()
+ * Puppy()
+ * ============================================================
+ */
+
+class Puppy extends Dog {
+
+    Puppy() {
+
+        // implicit super() -> Dog()
+
+        System.out.println("Puppy()");
+    }
+}
+
+
+/*
+ * ============================================================
+ * 6. DEFAULT CONSTRUCTOR
+ * ============================================================
+ *
+ * No constructor is written.
+ *
+ * Compiler provides approximately:
+ *
+ *     Car() {}
+ *
+ * ============================================================
+ */
+
+class Car {
+
+    int price = 100000;
+}
+
+
+/*
+ * ============================================================
+ * QUICK REFERENCE
+ * ============================================================
+ *
+ *
+ * CONSTRUCTOR SELECTION
+ * ---------------------
+ *
+ * new A()
+ *     -> A()
+ *
+ * new A(10)
+ *     -> A(int)
+ *
+ * new A("X")
+ *     -> A(String)
+ *
+ * new A("X", 10)
+ *     -> A(String, int)
+ *
+ *
+ *
+ * this()
+ * -------
+ *
+ * Same class
+ * Constructor chaining
+ * Must be first statement
+ *
+ *
+ * super()
+ * --------
+ *
+ * Parent class
+ * Constructor chaining
+ * Must be first statement
+ *
+ *
+ *
+ * INHERITANCE
+ * -----------
+ *
+ * Parent constructor
+ *       ↓
+ * Child constructor
+ *
+ *
+ *
+ * IMPORTANT
+ * ---------
+ *
+ * Constructors are NOT inherited.
+ *
+ * If no constructor is written:
+ *     compiler provides no-arg constructor.
+ *
+ * If any constructor is written:
+ *     compiler does NOT provide no-arg constructor.
+ *
+ * ============================================================
+ */
