@@ -57,7 +57,7 @@ public class ArraysDemo {
         boolean eq = Arrays.equals(intArr, new int[]{1, 2, 5, 7, 9});
         System.out.println("equals(): " + eq);
 
-        // 11. fill() -> fills array with same value
+        // 11. fill() -> fills array with same value 
         int[] fillArr = new int[5];
         Arrays.fill(fillArr, 42);
         System.out.println("fill(): " + Arrays.toString(fillArr));
