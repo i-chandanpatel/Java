@@ -424,6 +424,7 @@ class Demo {
 Class Variable NestedClass Required            
 IN1    static     static    Nothing
 IN2    static   non-static  IN2 obj
-IN3  non-static   static    Demo obj IN4  non-static non-static  Demo+ IN4 =====================================
+IN3  non-static   static    Demo obj
+IN4  non-static non-static  Demo+ IN4 =====================================
  */
 
