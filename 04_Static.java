@@ -213,4 +213,217 @@ class StaticDemo {
  *
  * ============================================================
  */
+class Demo {
+
+
+    // =========================================================
+    // IN1
+    // =========================================================
+    //
+    // static class
+    // static variable
+    //
+    // Neither requires an object.
+    // =========================================================
+
+    static class IN1 {
+
+        static int a = 1;
+    }
+
+
+    // =========================================================
+    // IN2
+    // =========================================================
+    //
+    // static class
+    // instance variable
+    //
+    // Demo object is NOT required,
+    // but IN2 object IS required to access 'a'.
+    // =========================================================
+
+    static class IN2 {
+
+        int a = 2;
+    }
+
+
+    // =========================================================
+    // IN3
+    // =========================================================
+    //
+    // non-static inner class
+    // static variable
+    //
+    // Demo object is required to CREATE an IN3 object.
+    //
+    // 'a' itself is static, so IN3 object is NOT required
+    // to access 'a'.
+    // =========================================================
+
+    class IN3 {
+
+        static int a = 3;
+    }
+
+
+    // =========================================================
+    // IN4
+    // =========================================================
+    //
+    // non-static inner class
+    // instance variable
+    //
+    // Demo object + IN4 object are required.
+    // =========================================================
+
+    class IN4 {
+
+        int a = 4;
+    }
+}
+
+
+/*
+ * ============================================================
+ * HOW TO ACCESS IN1, IN2, IN3 AND IN4
+ * ============================================================
+ *
+ *
+ * 1. IN1
+ * ============================================================
+ *
+ * static class
+ * static variable
+ *
+ * Code:
+ *
+ *     System.out.println(Demo.IN1.a);
+ *
+ *
+ * Why?
+ *
+ * IN1 is static
+ *     -> Demo object NOT required
+ *
+ * a is static
+ *     -> IN1 object NOT required
+ *
+ *
+ * Therefore:
+ *
+ *     Demo.IN1.a
+ *
+ *
+ *
+ * ------------------------------------------------------------
+ *
+ *
+ * 2. IN2
+ * ============================================================
+ *
+ * static class
+ * instance variable
+ *
+ * Code:
+ *
+ *     Demo.IN2 obj = new Demo.IN2();
+ *
+ *     System.out.println(obj.a);
+ *
+ *
+ * Why?
+ *
+ * IN2 is static
+ *     -> Demo object NOT required
+ *
+ * a is non-static
+ *     -> IN2 object IS required
+ *
+ *
+ * Therefore:
+ *
+ *     Demo.IN2 obj = new Demo.IN2();
+ *     obj.a
+ *
+ *
+ *
+ * ------------------------------------------------------------
+ *
+ *
+ * 3. IN3
+ * ============================================================
+ *
+ * non-static inner class
+ * static variable
+ *
+ * Code:
+ *
+ *     Demo demo = new Demo();
+ *
+ *     Demo.IN3 obj = demo.new IN3();
+ *
+ *     System.out.println(Demo.IN3.a);
+ *
+ *
+ * Why?
+ *
+ * IN3 is non-static
+ *     -> Demo object IS required to create IN3
+ *
+ * a is static
+ *     -> IN3 object NOT required to access a
+ *
+ *
+ * Therefore:
+ *
+ *     Demo demo = new Demo();
+ *     Demo.IN3 obj = demo.new IN3();
+ *
+ *     Demo.IN3.a
+ *
+ *
+ *
+ * ------------------------------------------------------------
+ *
+ *
+ * 4. IN4
+ * ============================================================
+ *
+ * non-static inner class
+ * instance variable
+ *
+ * Code:
+ *
+ *     Demo demo = new Demo();
+ *
+ *     Demo.IN4 obj = demo.new IN4();
+ *
+ *     System.out.println(obj.a);
+ *
+ *
+ * Why?
+ *
+ * IN4 is non-static
+ *     -> Demo object IS required
+ *
+ * a is non-static
+ *     -> IN4 object IS required
+ *
+ *
+ * Therefore:
+ *
+ *     Demo demo = new Demo();
+ *     Demo.IN4 obj = demo.new IN4();
+ *     obj.a
+ *
+ *
+ * =====================================
+ * QUICK MATRIX =====================================
+Class Variable NestedClass Required            
+IN1    static     static    Nothing
+IN2    static   non-static  IN2 obj
+IN3  non-static   static    Demo obj IN4  non-static non-static  Demo+ IN4 =====================================
+ */
 
